@@ -98,6 +98,8 @@
             // 
             this.chbxLog.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.chbxLog.AutoSize = true;
+            this.chbxLog.Checked = true;
+            this.chbxLog.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chbxLog.Location = new System.Drawing.Point(212, 19);
             this.chbxLog.Name = "chbxLog";
             this.chbxLog.Size = new System.Drawing.Size(59, 17);
