@@ -1,0 +1,8 @@
+E:\My_proj\WpfApp_binInvert\WpfApp_binInvert\obj\Debug\WpfApp_binInvert.csprojResolveAssemblyReference.cache
+E:\My_proj\WpfApp_binInvert\WpfApp_binInvert\obj\Debug\WpfApp_binInvert.csproj.GenerateResource.Cache
+E:\My_proj\WpfApp_binInvert\WpfApp_binInvert\obj\Debug\WpfApp_binInvert.MainForm.resources
+E:\My_proj\WpfApp_binInvert\WpfApp_binInvert\bin\Debug\WfApp_binInvert.exe
+E:\My_proj\WpfApp_binInvert\WpfApp_binInvert\bin\Debug\WfApp_binInvert.pdb
+E:\My_proj\WpfApp_binInvert\WpfApp_binInvert\obj\Debug\WfApp_binInvert.Properties.Resources.resources
+E:\My_proj\WpfApp_binInvert\WpfApp_binInvert\obj\Debug\WfApp_binInvert.exe
+E:\My_proj\WpfApp_binInvert\WpfApp_binInvert\obj\Debug\WfApp_binInvert.pdb

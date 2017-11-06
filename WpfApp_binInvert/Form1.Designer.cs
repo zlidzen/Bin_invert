@@ -1,4 +1,4 @@
-﻿namespace WpfApp_binInvert
+﻿namespace WfApp_binInvert
 {
     partial class MainForm
     {

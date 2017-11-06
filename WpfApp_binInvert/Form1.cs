@@ -3,7 +3,7 @@ using System.IO;
 using System.Threading;
 using System.Windows.Forms;
 
-namespace WpfApp_binInvert
+namespace WfApp_binInvert
 {    
     public partial class MainForm : Form
     {        
