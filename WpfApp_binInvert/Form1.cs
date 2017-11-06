@@ -1,12 +1,6 @@
 ﻿using System;
 using System.IO;
 using System.Threading;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 
 namespace WpfApp_binInvert
@@ -18,7 +12,8 @@ namespace WpfApp_binInvert
         public delegate void SetLog(string s);
         SetLog t_log;
         Param pt;
-        
+        private static ManualResetEvent autoEvent = new ManualResetEvent(false);        
+
         public MainForm()
         {
             InitializeComponent();
@@ -94,8 +89,9 @@ namespace WpfApp_binInvert
 
                         fstream.Seek(pos, SeekOrigin.Begin);
                         fstream.Write(rBuff, 0, rBuff.Length);
-                        cc++;
+                        cc++;                       
                     }
+                    autoEvent.WaitOne();
                     pbProcess.Invoke(d_UpBar);                   
                 }
                 pbProcess.Invoke(d_UpBar);
@@ -113,23 +109,30 @@ namespace WpfApp_binInvert
                 MessageBox.Show("Cannot open this file.");
                 return;
             }
-            
-            tbxLog.Clear();
-            FileInfo fi = new FileInfo(tbxFile.Text);            
-            Param pt = new Param(tbxFile.Text, fi.Length / 2);
-            doLog("File "+ pt.s + " is open.");
-            doLog("File length: " + fi.Length.ToString() + " bytes.");
-            pbSetStart((int)pt.l);
 
-            Thread tProc = new Thread(new ParameterizedThreadStart(invertFile));
-            tProc.Start(pt);                
-                    
+            Thread tProc = new Thread(new ParameterizedThreadStart(invertFile));           
+            bool isNewTr = tProc.IsAlive;
 
-           /* for (int i = 0; i < 11; i++)
+            if (btnAction.Text == "Run")
             {
-                tbxLog.AppendText(i.ToString());
-            }*/
-            //invertFile(tbxFile.Text);
+                autoEvent.Set();
+                if (!isNewTr)
+                {
+                    tbxLog.Clear();
+                    FileInfo fi = new FileInfo(tbxFile.Text);
+                    Param pt = new Param(tbxFile.Text, fi.Length / 2);
+                    doLog("File " + pt.s + " is open.");
+                    doLog("File length: " + fi.Length.ToString() + " bytes.");
+                    pbSetStart((int)pt.l);
+                    tProc.Start(pt);
+                }                
+                btnAction.Text = "Pause";
+            }
+            else if (btnAction.Text == "Pause")
+            {
+                autoEvent.Reset();
+                btnAction.Text = "Run";
+            }
         }
     }   
 
